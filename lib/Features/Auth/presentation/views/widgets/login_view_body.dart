@@ -78,7 +78,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ),
             CustomButton(
               text: 'Sign in',
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kHomeView);
+              },
             ),
             const SizedBox(
               height: 40,

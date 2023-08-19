@@ -4,12 +4,14 @@ import 'package:tourister/Features/Auth/presentation/views/register_view.dart';
 import 'package:tourister/Features/Auth/presentation/views/social_collection_view.dart';
 import 'package:tourister/Features/Splash/presentation/views/on_boarding_view.dart';
 import 'package:tourister/Features/Splash/presentation/views/splash_view.dart';
+import 'package:tourister/Features/home/presentation/views/home_view.dart';
 
 abstract class AppRouter {
   static const kLoginView = '/loginView';
   static const kRegisterView = '/registerView';
   static const kOnBoardingView = '/onBoardingView';
   static const kSocialCollectionView = '/socialCollectionView';
+  static const kHomeView = '/homeView';
 
   static final router = GoRouter(
     routes: [
@@ -32,6 +34,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSocialCollectionView,
         builder: (context, state) => const SocialCollectionView(),
+      ),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => const HomeView(),
       ),
     ],
   );
