@@ -29,8 +29,11 @@ class _PasswordTextFormInputState extends State<PasswordTextFormInput> {
           filled: true,
           prefixIcon: const Icon(
             Icons.lock,
-            color: Colors.black,
           ),
+          prefixIconColor: MaterialStateColor.resolveWith((states) =>
+              states.contains(MaterialState.focused)
+                  ? Colors.black
+                  : Colors.grey),
           suffixIcon: IconButton(
             onPressed: () {
               setState(() {

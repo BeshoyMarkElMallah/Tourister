@@ -7,6 +7,9 @@ class AssetsData {
   static const onBoardingimg3 = 'assets/images/onboarding3.png';
   static const onBoardingimg4 = 'assets/images/onboarding4.png';
 
+  // Social Collection Data
+  static const socialCollection = 'assets/images/socColl.png';
+
   // social imgs
   static const facebook = 'assets/images/facebook.png';
   static const google = 'assets/images/google.png';

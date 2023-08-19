@@ -11,7 +11,7 @@ class EmailTextFormInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextField(
       controller: emailController,
       cursorColor: Colors.black,
       keyboardType: TextInputType.emailAddress,
@@ -21,8 +21,11 @@ class EmailTextFormInput extends StatelessWidget {
           filled: true,
           prefixIcon: const Icon(
             Icons.email,
-            color: Colors.black,
           ),
+          prefixIconColor: MaterialStateColor.resolveWith((states) =>
+              states.contains(MaterialState.focused)
+                  ? Colors.black
+                  : Colors.grey),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(color: Colors.transparent),

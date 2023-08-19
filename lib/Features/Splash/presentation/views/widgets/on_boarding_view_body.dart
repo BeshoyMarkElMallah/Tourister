@@ -8,7 +8,9 @@ class OnBoardingViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        Expanded(child: CustomSliderOnBoarding()),
+        Expanded(
+          child: CustomSliderOnBoarding(),
+        ),
       ],
     );
   }

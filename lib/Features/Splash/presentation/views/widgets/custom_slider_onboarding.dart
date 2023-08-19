@@ -33,7 +33,7 @@ class CustomSliderOnBoarding extends StatelessWidget {
       finishButtonTextStyle: Styles.textStyle20
           .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
       onFinish: () {
-        GoRouter.of(context).push(AppRouter.kLoginView);
+        GoRouter.of(context).push(AppRouter.kSocialCollectionView);
       },
     );
   }
