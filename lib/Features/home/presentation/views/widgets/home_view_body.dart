@@ -63,7 +63,7 @@ class HomeViewBody extends StatelessWidget {
             ),
             MostVisitedListView(),
             const SizedBox(
-              height: 50,
+              height: 35,
             ),
             Text(
               'Recommended',

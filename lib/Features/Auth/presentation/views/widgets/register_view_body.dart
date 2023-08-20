@@ -9,6 +9,7 @@ import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/core/utils/styles.dart';
 import 'package:tourister/core/widgets/custom_button.dart';
 
+// ignore: must_be_immutable
 class RegisterViewBody extends StatelessWidget {
   RegisterViewBody({super.key});
 

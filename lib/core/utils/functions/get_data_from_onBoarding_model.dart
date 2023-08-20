@@ -5,7 +5,7 @@ import 'package:tourister/core/utils/styles.dart';
 List<Widget> getDataFromModel(
     {required bool isImg, required BuildContext context}) {
   List<Widget> list = [];
-  onBoardingList.forEach((element) {
+  for (var element in onBoardingList) {
     if (isImg) {
       list.add(
         Image.asset(element.image),
@@ -13,7 +13,7 @@ List<Widget> getDataFromModel(
     } else {
       list.add(
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Column(
             children: <Widget>[
               SizedBox(
@@ -28,6 +28,6 @@ List<Widget> getDataFromModel(
         ),
       );
     }
-  });
+  }
   return list;
 }

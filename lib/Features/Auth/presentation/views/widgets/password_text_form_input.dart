@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tourister/core/utils/styles.dart';
 
 class PasswordTextFormInput extends StatefulWidget {
-  PasswordTextFormInput({
+  const PasswordTextFormInput({
     super.key,
     required this.passController,
   });

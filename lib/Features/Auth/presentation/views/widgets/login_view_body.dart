@@ -11,7 +11,7 @@ import 'package:tourister/core/utils/styles.dart';
 import 'package:tourister/core/widgets/custom_button.dart';
 
 class LoginViewBody extends StatefulWidget {
-  LoginViewBody({super.key});
+  const LoginViewBody({super.key});
 
   @override
   State<LoginViewBody> createState() => _LoginViewBodyState();

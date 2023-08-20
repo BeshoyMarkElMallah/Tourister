@@ -82,12 +82,15 @@ class MostVisitedListViewItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(placeModel.distance),
-                  placeModel.isFav == true
-                      ? Icon(
-                          Icons.favorite,
-                          color: Colors.orange[400],
-                        )
-                      : const Icon(Icons.favorite_border_outlined)
+                  IconButton(
+                    onPressed: () {},
+                    icon: placeModel.isFav == true
+                        ? Icon(
+                            Icons.favorite,
+                            color: Colors.orange[400],
+                          )
+                        : const Icon(Icons.favorite_border_outlined),
+                  )
                 ],
               ),
             ),
