@@ -2,24 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:tourister/core/utils/styles.dart';
 
 class PasswordTextFormInput extends StatefulWidget {
-  const PasswordTextFormInput({
+  PasswordTextFormInput({
     super.key,
-    required this.passController,
+    this.onChanged,
   });
 
-  final TextEditingController passController;
+  Function(String)? onChanged;
 
   @override
   State<PasswordTextFormInput> createState() => _PasswordTextFormInputState();
 }
 
 class _PasswordTextFormInputState extends State<PasswordTextFormInput> {
-  bool obscureVar = false;
+  bool obscureVar = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.passController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please enter your password';
+        }
+      },
+      onChanged: widget.onChanged,
       cursorColor: Colors.black,
       keyboardType: TextInputType.emailAddress,
       obscureText: obscureVar,

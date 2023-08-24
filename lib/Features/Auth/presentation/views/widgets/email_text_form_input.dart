@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:tourister/core/utils/styles.dart';
 
 class EmailTextFormInput extends StatelessWidget {
-  const EmailTextFormInput({
-    super.key,
-    required this.emailController,
-  });
-
-  final TextEditingController emailController;
+  EmailTextFormInput({super.key, this.onChanged});
+  Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: emailController,
+    return TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please enter your email';
+        }
+      },
+      onChanged: onChanged,
       cursorColor: Colors.black,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
