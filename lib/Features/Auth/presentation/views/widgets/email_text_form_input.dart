@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourister/core/utils/styles.dart';
 
+// ignore: must_be_immutable
 class EmailTextFormInput extends StatelessWidget {
   EmailTextFormInput({super.key, this.onChanged});
   Function(String)? onChanged;
@@ -12,6 +13,7 @@ class EmailTextFormInput extends StatelessWidget {
         if (value!.isEmpty) {
           return 'Please enter your email';
         }
+        return null;
       },
       onChanged: onChanged,
       cursorColor: Colors.black,

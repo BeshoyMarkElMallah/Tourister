@@ -32,8 +32,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       listener: (context, state) {
         if (state is AuthError) {
           showSnackBar(context, state.error);
-        } else if (state is AuthSignedInWithEmail) {
-          GoRouter.of(context).push(AppRouter.kHomeView);
+        } else if (state is AuthSignedInWithEmail ||
+            state is AuthSignedInWithGoogle ||
+            state is AuthSignedInWithApple ||
+            state is AuthSignedInWithFacebook) {
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         }
       },
       builder: (context, state) {
@@ -117,9 +120,18 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           height: 30,
                         ),
                         SocialButtonsRow(
-                          facebookOnPressed: () {},
-                          googleOnPressed: () {},
-                          appleOnPressed: () {},
+                          facebookOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithFacebook();
+                          },
+                          googleOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithGoogle();
+                          },
+                          appleOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithApple();
+                          },
                         ),
                         const SizedBox(
                           height: 30,
@@ -128,7 +140,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                           text: 'Don\'t have an account?',
                           sign: 'Sign up',
                           onPressed: () {
-                            GoRouter.of(context).push(AppRouter.kRegisterView);
+                            GoRouter.of(context)
+                                .pushReplacement(AppRouter.kRegisterView);
                           },
                         ),
                       ],

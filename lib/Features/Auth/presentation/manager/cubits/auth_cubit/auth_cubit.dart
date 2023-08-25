@@ -11,8 +11,14 @@ class AuthCubit extends Cubit<AuthState> {
 
   void signInWithGoogle() async {
     emit(AuthLoading());
-    String uid = await _authRepoImpl.signInWithGoogle();
-    emit(AuthSignedInWithGoogle(uid: uid));
+    var data = await _authRepoImpl.signInWithGoogle();
+
+    data.fold((l) {
+      emit(AuthError(error: l!));
+    }, (r) {
+      _authRepoImpl.saveDataLocally(uid: r!);
+      emit(AuthSignedInWithGoogle(uid: r));
+    });
   }
 
   void signInWithFacebook() async {
@@ -61,5 +67,11 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       emit(AuthSignedUpWithEmail());
     }
+  }
+
+  Future<void> signOutFromGoogle() async {
+    emit(AuthLoading());
+    _authRepoImpl.signOutGoogle();
+    emit(AuthSignedOut());
   }
 }

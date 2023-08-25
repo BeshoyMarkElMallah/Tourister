@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tourister/Features/Auth/presentation/manager/cubits/auth_cubit/auth_cubit.dart';
 import 'package:tourister/constants.dart';
+import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/core/utils/styles.dart';
 
 class SearchSettingsRow extends StatelessWidget {
@@ -35,7 +39,10 @@ class SearchSettingsRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 10),
           color: kSecondaryColor,
           minWidth: MediaQuery.of(context).size.width * 0.01,
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<AuthCubit>(context).signOutFromGoogle();
+            GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
+          },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: const Icon(

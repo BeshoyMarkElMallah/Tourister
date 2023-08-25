@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tourister/core/utils/styles.dart';
 
+// ignore: must_be_immutable
 class PasswordTextFormInput extends StatefulWidget {
   PasswordTextFormInput({
     super.key,
@@ -23,6 +24,7 @@ class _PasswordTextFormInputState extends State<PasswordTextFormInput> {
         if (value!.isEmpty) {
           return 'Please enter your password';
         }
+        return null;
       },
       onChanged: widget.onChanged,
       cursorColor: Colors.black,

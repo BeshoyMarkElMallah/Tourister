@@ -30,12 +30,16 @@ class RegisterViewBody extends StatelessWidget {
         if (state is AuthError) {
           showSnackBar(context, state.error);
         } else if (state is AuthSignedUpWithEmail) {
-          GoRouter.of(context).push(AppRouter.kLoginView);
+          GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
+        } else if (state is AuthSignedInWithApple ||
+            state is AuthSignedInWithFacebook ||
+            state is AuthSignedInWithGoogle) {
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         }
       },
       builder: (context, state) {
         return state is AuthLoading
-            ? CustomLoadingIndicator()
+            ? const CustomLoadingIndicator()
             : Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 27),
                 child: SingleChildScrollView(
@@ -98,9 +102,18 @@ class RegisterViewBody extends StatelessWidget {
                           height: 30,
                         ),
                         SocialButtonsRow(
-                          facebookOnPressed: () {},
-                          googleOnPressed: () {},
-                          appleOnPressed: () {},
+                          facebookOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithFacebook();
+                          },
+                          googleOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithGoogle();
+                          },
+                          appleOnPressed: () {
+                            BlocProvider.of<AuthCubit>(context)
+                                .signInWithApple();
+                          },
                         ),
                         const SizedBox(
                           height: 30,

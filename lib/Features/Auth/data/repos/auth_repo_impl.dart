@@ -13,33 +13,32 @@ class AuthRepoImpl extends AuthRepo {
   Future<void> signInWithFacebok() async {}
 
   @override
-  Future<String> signInWithGoogle() async {
+  Future<Either<String?, String?>> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final OAuthCredential googleCredential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      // Sign in to Firebase with the Google [UserCredential].
+      final UserCredential googleUserCredential =
+          await FirebaseAuth.instance.signInWithCredential(googleCredential);
 
-      if (googleAuth.accessToken != null && googleAuth.idToken != null) {
-        final OAuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-        UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithCredential(credential);
+      print("doneeeeeeeeeee");
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(googleUser?.id.toString())
+          .set({});
 
-        if (userCredential.user != null) {
-          if (userCredential.additionalUserInfo!.isNewUser) {
-            FirebaseFirestore.instance
-                .collection('users')
-                .doc(userCredential.user?.uid);
-          }
-          return userCredential.user!.uid;
-        }
-      }
-      return '';
+      print("iddddd ${googleUser?.id}");
+
+      print("nameee ${googleUser?.displayName}");
+      return right(googleUser!.id.toString());
     } on FirebaseAuthException catch (e) {
       // print(e.message);
-      return e.message!;
+      return left(e.message!);
     }
   }
 
@@ -49,13 +48,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user != null) {
-        if (userCredential.additionalUserInfo!.isNewUser) {
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(userCredential.user?.uid);
-        }
-      }
+
       return right(userCredential.user!.uid);
     } on FirebaseAuthException catch (e) {
       return left(e.code);
@@ -69,9 +62,10 @@ class AuthRepoImpl extends AuthRepo {
           .createUserWithEmailAndPassword(email: email, password: password);
       if (userCredential.user != null) {
         if (userCredential.additionalUserInfo!.isNewUser) {
-          await FirebaseFirestore.instance
+          FirebaseFirestore.instance
               .collection('users')
-              .doc(userCredential.user?.uid);
+              .doc(userCredential.user?.uid)
+              .set({});
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -83,6 +77,12 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<void> saveDataLocally({required String uid}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('uid', FirebaseAuth.instance.currentUser!.uid);
+    prefs.setString('uid', uid);
+  }
+
+  @override
+  Future<void> signOutGoogle() async {
+    await GoogleSignIn().signOut();
+    await FirebaseAuth.instance.signOut();
   }
 }
