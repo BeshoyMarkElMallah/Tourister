@@ -37,6 +37,7 @@ class TouristerApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         theme: ThemeData(
+            scaffoldBackgroundColor: kBackgroundColor,
             primaryColor: kSecondaryColor,
             textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(foregroundColor: kSecondaryColor))),

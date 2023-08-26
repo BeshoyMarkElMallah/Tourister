@@ -18,13 +18,17 @@ class AssetsData {
 
   // Places Imgs
   static const cairoTower = 'assets/images/cairoTower.jpeg';
+  static const cairoTower2 = 'assets/images/cairo2.jpg';
   static const mohamedAli = 'assets/images/mohamedali.jpeg';
   static const pyramids = 'assets/images/pyramids.jpeg';
   static const abuSimbel = 'assets/images/abuSimbel.jpeg';
+  static const abuSimbel2 = 'assets/images/abusimbel2.jpg';
   static const highdam = 'assets/images/highdam.jpeg';
   static const nubianMuseum = 'assets/images/nubianMuseum.jpeg';
   static const nubianVillage = 'assets/images/nubianVillage.jpeg';
+  static const nubianVillage2 = 'assets/images/nubianvillage2.jpg';
   static const philae = 'assets/images/philae.jpg';
+  static const philae2 = 'assets/images/philae2.jpg';
 
   // categories icons
   static const historic = 'assets/images/historic.png';

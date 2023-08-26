@@ -21,7 +21,7 @@ List<Widget> getDataFromModel(
               ),
               Text(
                 element.description,
-                style: Styles.textStyle30.copyWith(fontWeight: FontWeight.bold),
+                style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w300),
               ),
             ],
           ),

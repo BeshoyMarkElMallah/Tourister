@@ -5,6 +5,8 @@ import 'package:tourister/Features/Auth/presentation/views/social_collection_vie
 import 'package:tourister/Features/Splash/presentation/views/on_boarding_view.dart';
 import 'package:tourister/Features/Splash/presentation/views/splash_view.dart';
 import 'package:tourister/Features/home/presentation/views/home_view.dart';
+import 'package:tourister/Features/home/presentation/views/site_view.dart';
+import 'package:tourister/core/models/place_model.dart';
 
 abstract class AppRouter {
   static const kLoginView = '/loginView';
@@ -12,6 +14,7 @@ abstract class AppRouter {
   static const kOnBoardingView = '/onBoardingView';
   static const kSocialCollectionView = '/socialCollectionView';
   static const kHomeView = '/homeView';
+  static const kSiteView = '/siteView';
 
   static final router = GoRouter(
     routes: [
@@ -38,6 +41,12 @@ abstract class AppRouter {
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
+      ),
+      GoRoute(
+        path: kSiteView,
+        builder: (context, state) => SiteView(
+          placeModel: state.extra as PlaceModel,
+        ),
       ),
     ],
   );

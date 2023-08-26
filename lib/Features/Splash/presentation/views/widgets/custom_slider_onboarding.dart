@@ -31,7 +31,7 @@ class CustomSliderOnBoarding extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20.0)))),
       finishButtonText: 'Get Started',
       finishButtonTextStyle: Styles.textStyle20
-          .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+          .copyWith(color: Colors.black, fontWeight: FontWeight.w700),
       onFinish: () {
         GoRouter.of(context).push(AppRouter.kSocialCollectionView);
       },

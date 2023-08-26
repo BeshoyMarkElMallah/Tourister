@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tourister/Features/search/data/static/places_list.dart';
 import 'package:tourister/Features/search/presentation/views/widgets/search_result_list_view_item.dart';
 import 'package:tourister/core/models/place_model.dart';
 
@@ -21,7 +20,6 @@ class SearchResultListView extends StatelessWidget {
           child: SearchResultListViewItem(
             placeModel: places[index],
           ),
-          // child: Text("data"),
         );
       },
     );

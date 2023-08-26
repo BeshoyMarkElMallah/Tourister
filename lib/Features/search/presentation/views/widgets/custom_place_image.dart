@@ -9,7 +9,7 @@ class CustomPlaceImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: AspectRatio(
-        aspectRatio: 2.6 / 4,
+        aspectRatio: 3 / 2.6,
         child: Image.asset(
           imageUrl,
           fit: BoxFit.fill,

@@ -55,7 +55,7 @@ class CategoriesListViewItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: Styles.textStyle14,
+            style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
           ),
         ],
       ),

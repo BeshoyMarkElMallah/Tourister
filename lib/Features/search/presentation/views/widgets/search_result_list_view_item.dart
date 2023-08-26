@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tourister/Features/search/presentation/views/widgets/custom_place_image.dart';
 import 'package:tourister/core/models/place_model.dart';
+import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/core/utils/styles.dart';
+import 'package:tourister/core/widgets/custom_favorite_button.dart';
+import 'package:tourister/core/widgets/title_rate_row.dart';
 
 class SearchResultListViewItem extends StatelessWidget {
   const SearchResultListViewItem({super.key, required this.placeModel});
@@ -10,55 +14,55 @@ class SearchResultListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
+        GoRouter.of(context).push(AppRouter.kSiteView, extra: placeModel);
       },
-      child: SizedBox(
-        height: 125,
-        child: Row(
-          children: [
-            CustomPlaceImage(imageUrl: placeModel.img),
-            const SizedBox(
-              width: 30,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Text(
-                      placeModel.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: Styles.textStyle20,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    placeModel.location,
-                    style: Styles.textStyle16,
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        placeModel.distance,
-                        style: Styles.textStyle14,
-                      ),
-                      const Spacer(),
-                      // Bookrating(
-                      //     rating: bookModel.volumeInfo.maturityRating ?? "0",
-                      //     count: bookModel.volumeInfo.pageCount ?? 0),
-                    ],
-                  )
-                ],
+      child: Card(
+        color: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: SizedBox(
+          height: 125,
+          child: Row(
+            children: [
+              CustomPlaceImage(imageUrl: placeModel.img[0]),
+              const SizedBox(
+                width: 20,
               ),
-            ),
-          ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TitleRateRow(
+                      placeModel: placeModel,
+                      titleStyle: Styles.textStyle14
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.location_on,
+                          color: Colors.grey,
+                        ),
+                        Text(placeModel.location),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(placeModel.distance),
+                        CustomFavoriteButton(placeModel: placeModel)
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

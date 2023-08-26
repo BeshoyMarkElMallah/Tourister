@@ -4,12 +4,10 @@ import 'package:tourister/Features/search/presentation/manager/cubits/search_cub
 import 'package:tourister/constants.dart';
 import 'package:tourister/core/utils/styles.dart';
 
+// ignore: must_be_immutable
 class CustomSearchTextField extends StatelessWidget {
-  CustomSearchTextField({super.key, this.onChanged});
+  const CustomSearchTextField({super.key});
 
-  final Function(String)? onChanged;
-  TextEditingController searchController = TextEditingController();
-  // FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return SizedBox(

@@ -18,6 +18,7 @@ class SearchSettingsRow extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.73,
           child: TextField(
+            onSubmitted: (value) {},
             cursorColor: kSecondaryColor,
             decoration: InputDecoration(
               focusColor: kSecondaryColor,

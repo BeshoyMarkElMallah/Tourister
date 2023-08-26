@@ -16,40 +16,36 @@ class SearchViewBody extends StatelessWidget {
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         if (state is SearchLoading) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 16,
                 ),
-                CustomSearchTextField(onChanged: (value) {
-                  BlocProvider.of<SearchCubit>(context).searchPlace(value);
-                }),
-                const SizedBox(
+                CustomSearchTextField(),
+                SizedBox(
                   height: 100,
                 ),
-                const CustomLoadingIndicator(),
+                CustomLoadingIndicator(),
               ],
             ),
           );
         } else if (state is SearchSuccess) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(
                   height: 16,
                 ),
-                CustomSearchTextField(onChanged: (value) {
-                  BlocProvider.of<SearchCubit>(context).searchPlace(value);
-                }),
+                const CustomSearchTextField(),
                 const SizedBox(
                   height: 16,
                 ),
-                const Text(
+                Text(
                   'Search Result',
                   style: Styles.textStyle18,
                 ),
@@ -63,45 +59,41 @@ class SearchViewBody extends StatelessWidget {
             ),
           );
         } else if (state is SearchEmpty) {
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+          return const SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 16,
                   ),
-                  CustomSearchTextField(onChanged: (value) {
-                    BlocProvider.of<SearchCubit>(context).searchPlace(value);
-                  }),
-                  const SizedBox(
+                  CustomSearchTextField(),
+                  SizedBox(
                     height: 100,
                   ),
-                  const NoData()
+                  NoData()
                 ],
               ),
             ),
           );
         } else {
-          return SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+          return const SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
+                  SizedBox(
                     height: 16,
                   ),
-                  CustomSearchTextField(onChanged: (value) {
-                    BlocProvider.of<SearchCubit>(context).searchPlace(value);
-                  }),
-                  const SizedBox(
+                  CustomSearchTextField(),
+                  SizedBox(
                     height: 100,
                   ),
-                  const SearchNow()
+                  SearchNow()
                 ],
               ),
             ),

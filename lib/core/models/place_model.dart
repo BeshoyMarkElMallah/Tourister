@@ -1,5 +1,6 @@
 class PlaceModel {
-  final String img;
+  final String category;
+  final List<String> img;
   final String title;
   final String description;
   final String location;
@@ -7,7 +8,8 @@ class PlaceModel {
   final bool isFav;
 
   const PlaceModel(
-      {required this.img,
+      {required this.category,
+      required this.img,
       required this.title,
       required this.description,
       required this.location,

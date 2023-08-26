@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tourister/core/models/place_model.dart';
+import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/core/utils/styles.dart';
+import 'package:tourister/core/widgets/custom_favorite_button.dart';
+import 'package:tourister/core/widgets/title_rate_row.dart';
 
 class MostVisitedListViewItem extends StatelessWidget {
   const MostVisitedListViewItem({super.key, required this.placeModel});
@@ -10,8 +14,7 @@ class MostVisitedListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // GoRouter.of(context)
-        //     .push(AppRouter.kSocialCollectionView, extra: placeModel);
+        GoRouter.of(context).push(AppRouter.kSiteView, extra: placeModel);
       },
       child: Container(
         margin: const EdgeInsets.all(8.0),
@@ -27,39 +30,17 @@ class MostVisitedListViewItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                placeModel.img,
+                placeModel.img[0],
                 fit: BoxFit.cover,
               ),
             ),
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Text(
-                    placeModel.title,
-                    style: Styles.textStyle14,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Text(
-                    '4.5',
-                    style: Styles.textStyle14.copyWith(color: Colors.grey),
-                  ),
-                ),
-              ],
+            TitleRateRow(
+              placeModel: placeModel,
+              titleStyle:
+                  Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 10,
@@ -82,15 +63,7 @@ class MostVisitedListViewItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(placeModel.distance),
-                  IconButton(
-                    onPressed: () {},
-                    icon: placeModel.isFav == true
-                        ? Icon(
-                            Icons.favorite,
-                            color: Colors.orange[400],
-                          )
-                        : const Icon(Icons.favorite_border_outlined),
-                  )
+                  CustomFavoriteButton(placeModel: placeModel)
                 ],
               ),
             ),

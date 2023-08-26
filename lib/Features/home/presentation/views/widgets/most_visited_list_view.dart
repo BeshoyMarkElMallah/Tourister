@@ -10,14 +10,16 @@ class MostVisitedListView extends StatelessWidget {
   });
   List<PlaceModel> data = [
     const PlaceModel(
-        img: AssetsData.pyramids,
+        category: 'Historical Sites',
+        img: [AssetsData.pyramids],
         title: 'Pyramids of Giza',
         description: 'lorem',
         location: 'Giza',
         distance: '4 km',
         isFav: false),
     const PlaceModel(
-        img: AssetsData.cairoTower,
+        category: 'Historical Sites',
+        img: [AssetsData.cairoTower],
         title: 'Cairo Tower',
         description: 'lorem',
         location: 'El Zamalek',
