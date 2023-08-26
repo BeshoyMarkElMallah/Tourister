@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tourister/Features/home/data/models/place_model.dart';
+import 'package:tourister/core/models/place_model.dart';
 import 'package:tourister/core/utils/styles.dart';
 
 class MostVisitedListViewItem extends StatelessWidget {

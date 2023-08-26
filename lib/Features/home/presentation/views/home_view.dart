@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourister/Features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:tourister/Features/search/presentation/manager/cubits/search_cubit/search_cubit.dart';
+import 'package:tourister/Features/search/presentation/views/search_view.dart';
 import 'package:tourister/core/widgets/custom_bottom_navbar.dart';
 
 class HomeView extends StatefulWidget {
@@ -16,6 +19,7 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       _selectedIndex = index;
     });
+    BlocProvider.of<SearchCubit>(context).clearSearch();
   }
 
   final _pages = [
@@ -23,9 +27,7 @@ class _HomeViewState extends State<HomeView> {
     const Center(
       child: Text('Bookings'),
     ),
-    const Center(
-      child: Text('Explore'),
-    ),
+    const SearchView(),
     const Center(
       child: Text('Favorites'),
     ),

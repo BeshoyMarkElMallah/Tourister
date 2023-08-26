@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourister/Features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:tourister/Features/Auth/presentation/manager/cubits/auth_cubit/auth_cubit.dart';
+import 'package:tourister/Features/search/presentation/manager/cubits/search_cubit/search_cubit.dart';
 import 'package:tourister/constants.dart';
 import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/firebase_options.dart';
@@ -29,6 +30,9 @@ class TouristerApp extends StatelessWidget {
           create: (context) => AuthCubit(
             AuthRepoImpl(),
           ),
+        ),
+        BlocProvider(
+          create: (context) => SearchCubit(),
         ),
       ],
       child: MaterialApp.router(

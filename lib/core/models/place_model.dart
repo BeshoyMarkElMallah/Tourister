@@ -12,5 +12,5 @@ class PlaceModel {
       required this.description,
       required this.location,
       required this.distance,
-      required this.isFav});
+      this.isFav = false});
 }
