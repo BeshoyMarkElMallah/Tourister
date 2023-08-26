@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tourister/Features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:tourister/Features/Auth/presentation/manager/cubits/auth_cubit/auth_cubit.dart';
+import 'package:tourister/Features/home/presentation/manager/cubits/pages_data_cubit/pages_data_cubit.dart';
 import 'package:tourister/Features/search/presentation/manager/cubits/search_cubit/search_cubit.dart';
 import 'package:tourister/constants.dart';
 import 'package:tourister/core/utils/app_router.dart';
@@ -33,6 +34,9 @@ class TouristerApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SearchCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PagesDataCubit(),
         ),
       ],
       child: MaterialApp.router(

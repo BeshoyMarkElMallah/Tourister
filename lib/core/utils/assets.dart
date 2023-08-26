@@ -30,6 +30,12 @@ class AssetsData {
   static const philae = 'assets/images/philae.jpg';
   static const philae2 = 'assets/images/philae2.jpg';
 
+  // Retaurants Imgs
+  static const makani1 = 'assets/images/makani1.jpeg';
+  static const makani2 = 'assets/images/makani2.jpeg';
+  static const alqahwa1 = 'assets/images/alqahwa1.jpeg';
+  static const alqahwa2 = 'assets/images/alqahwa2.jpeg';
+
   // categories icons
   static const historic = 'assets/images/historic.png';
   static const beach = 'assets/images/beach.png';

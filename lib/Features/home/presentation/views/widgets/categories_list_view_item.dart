@@ -39,6 +39,7 @@ class CategoriesListViewItem extends StatelessWidget {
                   child: Image.asset(
                     img,
                     fit: BoxFit.cover,
+                    color: Colors.white,
                   ),
                 )
               : CircleAvatar(

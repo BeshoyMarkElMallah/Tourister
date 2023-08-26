@@ -3,7 +3,7 @@ import 'package:tourister/core/utils/assets.dart';
 
 const List<PlaceModel> placesDatas = [
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.abuSimbel, AssetsData.abuSimbel2],
     title: 'Abu Simbel temples',
     description:
@@ -12,7 +12,7 @@ const List<PlaceModel> placesDatas = [
     distance: '200 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.highdam],
     title: 'High Dam',
     description:
@@ -21,7 +21,7 @@ const List<PlaceModel> placesDatas = [
     distance: '20 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.nubianMuseum],
     title: 'Nubian Museum',
     description:
@@ -30,7 +30,7 @@ const List<PlaceModel> placesDatas = [
     distance: '1 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.nubianVillage, AssetsData.nubianVillage2],
     title: 'Nubian Village',
     description:
@@ -39,7 +39,7 @@ const List<PlaceModel> placesDatas = [
     distance: '3 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.philae, AssetsData.philae2],
     title: 'Philae temple',
     description:
@@ -48,7 +48,7 @@ const List<PlaceModel> placesDatas = [
     distance: '5 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.cairoTower, AssetsData.cairoTower2],
     title: 'Cairo Tower',
     description:
@@ -57,7 +57,7 @@ const List<PlaceModel> placesDatas = [
     distance: '5 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.mohamedAli],
     title: 'Mosque of Muhammad Ali',
     description:
@@ -66,7 +66,7 @@ const List<PlaceModel> placesDatas = [
     distance: '6 km',
   ),
   PlaceModel(
-    category: 'Historical Sites',
+    category: 'Historic Sites',
     img: [AssetsData.pyramids],
     title: 'Pyramids of Giza',
     description:
@@ -74,4 +74,30 @@ const List<PlaceModel> placesDatas = [
     location: 'Cairo',
     distance: '50 km',
   ),
+  PlaceModel(
+    category: 'Restaurants',
+    img: [
+      AssetsData.makani1,
+      AssetsData.makani2,
+    ],
+    title: 'Makani',
+    description:
+        'HEALTHY AFRICAN FOOD\nSpecial Spices,\nSpecial Juices,\nNile view.',
+    location: 'Aswan',
+    distance: '1.5 miles',
+    isFav: false,
+  ),
+  PlaceModel(
+    category: 'Cafes',
+    img: [
+      AssetsData.alqahwa1,
+      AssetsData.alqahwa2,
+    ],
+    title: 'AlQahwa Cafe',
+    description:
+        'Al Qahwa  features a beautiful terrace from which you can watch the sunset while enjoying a cup of freshly-brewed Mövenpick coffee or try an exotic cocktail. The Bar also offers a selection of snacks. ',
+    location: 'Aswan',
+    distance: '3 miles',
+    isFav: false,
+  )
 ];
