@@ -7,6 +7,7 @@ import 'package:tourister/Features/Auth/presentation/views/widgets/custom_divide
 import 'package:tourister/Features/Auth/presentation/views/widgets/social_icons_button.dart';
 import 'package:tourister/core/utils/app_router.dart';
 import 'package:tourister/core/utils/assets.dart';
+import 'package:tourister/core/utils/functions/alert_internet_dialog.dart';
 import 'package:tourister/core/utils/functions/show_snackBar.dart';
 import 'package:tourister/core/utils/styles.dart';
 import 'package:tourister/core/widgets/custom_loading_indicator.dart';
@@ -24,6 +25,8 @@ class SocialCollectionBody extends StatelessWidget {
             state is AuthSignedInWithFacebook ||
             state is AuthSignedInWithGoogle) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+        } else if (state is AuthConnectionFailure) {
+          showInternetDialog(context, state.error);
         }
       },
       builder: (context, state) {

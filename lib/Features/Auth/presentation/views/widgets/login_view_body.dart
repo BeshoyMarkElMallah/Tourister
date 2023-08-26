@@ -9,6 +9,7 @@ import 'package:tourister/Features/Auth/presentation/views/widgets/password_text
 import 'package:tourister/Features/Auth/presentation/views/widgets/social_buttons_row.dart';
 import 'package:tourister/constants.dart';
 import 'package:tourister/core/utils/app_router.dart';
+import 'package:tourister/core/utils/functions/alert_internet_dialog.dart';
 import 'package:tourister/core/utils/functions/show_snackBar.dart';
 import 'package:tourister/core/utils/styles.dart';
 import 'package:tourister/core/widgets/custom_button.dart';
@@ -37,6 +38,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             state is AuthSignedInWithApple ||
             state is AuthSignedInWithFacebook) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+        } else if (state is AuthConnectionFailure) {
+          showInternetDialog(context, state.error);
         }
       },
       builder: (context, state) {

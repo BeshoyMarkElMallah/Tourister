@@ -16,29 +16,43 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<String?, String?>> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      if (googleUser == null) {
+        return left('Please sign in with Google');
+      }
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
       final OAuthCredential googleCredential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
-      // Sign in to Firebase with the Google [UserCredential].
-      final UserCredential googleUserCredential =
+
+      final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(googleCredential);
 
       print("doneeeeeeeeeee");
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(googleUser?.id.toString())
-          .set({});
 
-      print("iddddd ${googleUser?.id}");
+      final user = userCredential.user;
+      if (user == null) {
+        return left('No User');
+      }
 
-      print("nameee ${googleUser?.displayName}");
-      return right(googleUser!.id.toString());
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+        'displayName': user.displayName,
+        // You can add other user information here
+      });
+
+      print("iddddd ${user.uid}");
+      print("nameee ${user.displayName}");
+
+      return right(user.uid); // Returning user UID
     } on FirebaseAuthException catch (e) {
-      // print(e.message);
-      return left(e.message!);
+      print("Error: ${e.code} - ${e.message}");
+      return left(
+          e.message); // Re-throw the exception to handle it at a higher level
+    } catch (e) {
+      print("Error: $e");
+      return left(e.toString()); // Custom error message
     }
   }
 

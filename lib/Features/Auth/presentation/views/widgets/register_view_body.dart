@@ -8,6 +8,7 @@ import 'package:tourister/Features/Auth/presentation/views/widgets/email_text_fo
 import 'package:tourister/Features/Auth/presentation/views/widgets/password_text_form_input.dart';
 import 'package:tourister/Features/Auth/presentation/views/widgets/social_buttons_row.dart';
 import 'package:tourister/core/utils/app_router.dart';
+import 'package:tourister/core/utils/functions/alert_internet_dialog.dart';
 import 'package:tourister/core/utils/functions/show_snackBar.dart';
 import 'package:tourister/core/utils/styles.dart';
 import 'package:tourister/core/widgets/custom_button.dart';
@@ -35,6 +36,8 @@ class RegisterViewBody extends StatelessWidget {
             state is AuthSignedInWithFacebook ||
             state is AuthSignedInWithGoogle) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+        } else if (state is AuthConnectionFailure) {
+          showInternetDialog(context, state.error);
         }
       },
       builder: (context, state) {

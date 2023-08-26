@@ -48,3 +48,11 @@ final class AuthSignedInWithEmail extends AuthState {
 }
 
 final class AuthSignedUpWithEmail extends AuthState {}
+
+class AuthConnectionSuccess extends AuthState {}
+
+class AuthConnectionFailure extends AuthState {
+  final String error;
+
+  AuthConnectionFailure({required this.error});
+}

@@ -14,6 +14,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   Bloc.observer = MyBlocObserver();
+
   runApp(const TouristerApp());
 }
 
